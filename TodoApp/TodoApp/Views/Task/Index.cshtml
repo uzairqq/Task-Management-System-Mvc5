@@ -1,8 +1,23 @@
-﻿@model dynamic
+﻿@model IEnumerable<TodoApp.Models.Tasks>
 
 @{
     ViewBag.Title = "title";
-    Layout = "_Layout";
+    //Layout = "_Layout";
 }
 
-<h2>title</h2>
+<h2>Tasks</h2>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Task Name</th> 
+        <th>Task Description</th>
+    </tr>
+    <tr>
+        @foreach (var t in Model)
+        {
+            <td>@t.Id</td>
+            <td>@t.TaskName</td>
+            <td>@t.Description</td>
+        }
+    </tr>
+</table>
