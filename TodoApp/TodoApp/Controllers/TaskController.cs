@@ -21,5 +21,19 @@ namespace TodoApp.Controllers
             var list = _context.Taskses.ToList();
             return View(list);
         }
+
+        [HttpPost]
+        public ActionResult Save(Tasks tasks)
+        {
+            _context.Taskses.Add(tasks);
+            _context.SaveChanges();
+            return RedirectToAction("Index","Task");
+        }
+
+        public ActionResult New()
+        {
+            return View();
+        }
+        
     }
 }
