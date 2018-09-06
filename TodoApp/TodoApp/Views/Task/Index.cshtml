@@ -13,20 +13,22 @@
 </head>
 <h2>Tasks</h2>
 
-<table class="table table-responsive table-active">
+<table class="table table-bordered table-hover">
     <tr>
         <th>Id</th>
         <th>Task Name</th> 
         <th>Task Description</th>
+        <th>Action</th>
     </tr>
-    <tr>
         @foreach (var t in Model)
         {
-            <td>@t.Id</td>
-            <td>@t.TaskName</td>
-            <td>@t.Description</td>
-        }
+    <tr>
+        <td>@t.Id</td>
+        <td>@Html.ActionLink(t.TaskName, "Update", "Task", new { id = t.Id }, null)</td>
+        <td>@t.Description</td>
+        <td>@Html.ActionLink("Edit","Update","Task",new {id=t.Id},null)</td>
     </tr>
+        }
 </table>
 
 

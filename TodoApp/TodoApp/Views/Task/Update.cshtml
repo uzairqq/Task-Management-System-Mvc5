@@ -1,0 +1,26 @@
+﻿@model TodoApp.Models.Tasks
+
+@{
+    ViewBag.Title = "title";
+    //Layout = "Index.cshtml";
+}
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @*<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>  <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>*@
+</head>
+<h2>Update</h2>
+
+@using (Html.BeginForm("Save", "Task"))
+{
+    @Html.HiddenFor(i=>i.Id)
+    @Html.LabelFor(i=>i.TaskName)
+    @Html.TextBoxFor(i=>i.TaskName)
+
+    @Html.LabelFor(i=>i.Description)
+    @Html.TextBoxFor(i=>i.Description)
+
+    <button class="btn btn-primary">Update</button>
+}

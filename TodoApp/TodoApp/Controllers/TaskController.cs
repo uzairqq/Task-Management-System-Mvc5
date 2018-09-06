@@ -15,6 +15,10 @@ namespace TodoApp.Controllers
         {
             _context=new ApplicationDbContext();
         }
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
         // GET: Task
         public ActionResult Index()
         {
@@ -25,7 +29,16 @@ namespace TodoApp.Controllers
         [HttpPost]
         public ActionResult Save(Tasks tasks)
         {
-            _context.Taskses.Add(tasks);
+            if (tasks.Id == 0)
+            {
+                _context.Taskses.Add(tasks);
+            }
+            else
+            {
+                var recordInDb = _context.Taskses.Single(i => i.Id == tasks.Id);
+                recordInDb.TaskName = tasks.TaskName;
+                recordInDb.Description = tasks.Description;
+            }
             _context.SaveChanges();
             return RedirectToAction("Index","Task");
         }
@@ -33,6 +46,14 @@ namespace TodoApp.Controllers
         public ActionResult New()
         {
             return View();
+        }
+
+ 
+
+        public ActionResult Update(int id)
+        {
+            var recordInDb = _context.Taskses.Single(i => i.Id==id);
+            return View(recordInDb);
         }
         
     }
