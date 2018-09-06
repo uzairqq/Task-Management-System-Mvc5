@@ -55,6 +55,15 @@ namespace TodoApp.Controllers
             var recordInDb = _context.Taskses.Single(i => i.Id==id);
             return View(recordInDb);
         }
-        
+
+
+        public ActionResult Remove(int id)
+        {
+            var recordInDb = _context.Taskses.Single(i=>i.Id==id);
+            _context.Taskses.Remove(recordInDb);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Task");
+        }
+
     }
 }

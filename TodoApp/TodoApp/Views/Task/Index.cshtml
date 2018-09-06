@@ -19,6 +19,7 @@
         <th>Task Name</th> 
         <th>Task Description</th>
         <th>Action</th>
+        <td></td>
     </tr>
         @foreach (var t in Model)
         {
@@ -26,7 +27,8 @@
         <td>@t.Id</td>
         <td>@Html.ActionLink(t.TaskName, "Update", "Task", new { id = t.Id }, null)</td>
         <td>@t.Description</td>
-        <td>@Html.ActionLink("Edit","Update","Task",new {id=t.Id},null)</td>
+        <td>@Html.ActionLink("Edit", "Update", "Task",new {id=t.Id},null)</td>
+        <td>@Html.ActionLink("Delete", "Remove", "Task",new {id=t.Id},null)</td>
     </tr>
         }
 </table>
