@@ -1,16 +1,11 @@
-﻿@model IEnumerable<TodoApp.Models.Tasks>
+﻿@using System.Web.Optimization
+@model IEnumerable<TodoApp.Models.Tasks>
 
 @{
     ViewBag.Title = "title";
-    //Layout = "_Layout";
+    
 }
-<head>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    @*<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>  <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>*@
-</head>
+
 <h2>Tasks</h2>
 @Html.ActionLink("Add New","New","Task",new {@class="btn btn-primary"})
 <table class="table table-bordered table-hover">
@@ -32,5 +27,6 @@
     </tr>
         }
 </table>
+
 
 
